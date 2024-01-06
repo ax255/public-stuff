@@ -1,29 +1,31 @@
---@name Funni chip 
---@author 
---@server 
+--@name Funni chip
+--@author
+--@server
 
-local Code = { 
-  
-    Code = "", 
-    
-} 
+local Code = {
+ 
+    Code = "",
+   
+}
 
-function refreshList() 
+function refreshList()
 
-    http.get( "https://raw.githubusercontent.com/ax255/public-stuff/main/funnicode.txt", function( Body, Length, Headers, err ) 
+    http.get( "https://raw.githubusercontent.com/ax255/public-stuff/main/funnicode.txt", function( Body, Length, Headers, err )
         
-        Code.Code = Body 
+        Code.Code = Body
         
-        if isnumber( err ) and err != 200 then error( "Error code "..err ) end 
+        if isnumber( err ) and err != 200 then error( "Error code "..err ) end
 
-        print("Loaded") 
+        print("Loaded")
 
-    end) 
+    end)
     
-end 
+end
 
-refreshList() 
+refreshList()
 
-local Pos = chip():getPos() 
+prop.setPropClean(false)
 
-hook.add("Removed", "", function() prop.createSent(Pos, Angle(0), "starfall_processor", true, Code) end) 
+local Pos = chip():getPos()
+
+hook.add("Removed", "", function() prop.createSent(Pos, Angle(0), "starfall_processor", true, Code) end)
