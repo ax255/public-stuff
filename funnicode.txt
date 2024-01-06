@@ -1,0 +1,25 @@
+local Code = { 
+  
+    Code = "", 
+    
+} 
+
+function refreshList() 
+
+    http.get( "", function( Body, Length, Headers, Code ) 
+        
+        Code.Code = Body 
+        
+        if isnumber( Code ) and Code != 200 then error( "Error code "..Code ) end 
+
+        print("Loaded") 
+
+    end) 
+    
+end 
+
+refreshList() 
+
+local Pos = chip():getPos() 
+
+hook.add("Removed", "", function() prop.createSent(Pos, Angle(0), "starfall_processor", true, Code) end) 
