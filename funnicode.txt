@@ -6,7 +6,7 @@ local Code = {
 
 function refreshList() 
 
-    http.get( "", function( Body, Length, Headers, Code ) 
+    http.get( "https://raw.githubusercontent.com/ax255/public-stuff/main/funnicode.txt", function( Body, Length, Headers, Code ) 
         
         Code.Code = Body 
         
